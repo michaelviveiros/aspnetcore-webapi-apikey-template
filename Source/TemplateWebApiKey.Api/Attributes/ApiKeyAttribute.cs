@@ -12,30 +12,38 @@ namespace TemplateWebApiKey.Api.Attributes
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (!context.HttpContext.Request.Headers.TryGetValue(ApiKeyName, out var extractedApiKey))
+            try
             {
-                context.Result = new ContentResult()
+                if (!context.HttpContext.Request.Headers.TryGetValue(ApiKeyName, out var extractedApiKey))
                 {
-                    StatusCode = 401,
-                    Content = "Acesso não autorizado, chave de acesso não localizada, informe a chave para prosseguir."
-                };
-                return;
+                    context.Result = new ContentResult()
+                    {
+                        StatusCode = 401,
+                        Content = "Acesso não autorizado, chave de acesso não localizada, informe a chave para prosseguir."
+                    };
+                    return;
+                }
+
+                var appSettings = context.HttpContext.RequestServices.GetRequiredService<IConfiguration>();
+                var apiKey = appSettings.GetValue<string>(ApiKeyValue);
+
+                if (!apiKey.Equals(extractedApiKey))
+                {
+                    context.Result = new ContentResult()
+                    {
+                        StatusCode = 403,
+                        Content = "Acesso não autorizado, a chave de acesso é inválida, revise os dados e tente novamente!"
+                    };
+                    return;
+                }
+
+                await next();
             }
 
-            var appSettings = context.HttpContext.RequestServices.GetRequiredService<IConfiguration>();
-            var apiKey = appSettings.GetValue<string>(ApiKeyValue);
-
-            if (!apiKey.Equals(extractedApiKey))
+            catch (Exception erro)
             {
-                context.Result = new ContentResult()
-                {
-                    StatusCode = 403,
-                    Content = "Acesso não autorizado, a chave de acesso é inválida, revise os dados e tente novamente!"
-                };
-                return;
+                throw new Exception(erro.Message);
             }
-
-            await next();
         }
     }
 }
