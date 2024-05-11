@@ -19,7 +19,6 @@ namespace TemplateWebApiKey.Api.Attributes
                     StatusCode = 401,
                     Content = "Acesso não autorizado, chave de acesso não localizada, informe a chave para prosseguir."
                 };
-
                 return;
             }
 
@@ -33,7 +32,6 @@ namespace TemplateWebApiKey.Api.Attributes
                     StatusCode = 403,
                     Content = "Acesso não autorizado, a chave de acesso é inválida, revise os dados e tente novamente!"
                 };
-
                 return;
             }
 
