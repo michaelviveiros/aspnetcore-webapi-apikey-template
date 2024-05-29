@@ -1,6 +1,6 @@
 ﻿using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace TemplateWebApiKey.Api.Class
+namespace TemplateWeb.Api.Class
 {
     public class ResultResponse<T>
     {

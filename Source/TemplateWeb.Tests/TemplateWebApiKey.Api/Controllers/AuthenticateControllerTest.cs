@@ -2,11 +2,11 @@
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.ComponentModel;
-using TemplateWebApiKey.Api.Class;
-using TemplateWebApiKey.Api.Controllers;
+using TemplateWeb.Api.Class;
+using TemplateWeb.Api.Controllers;
 using Xunit;
 
-namespace TemplateWebApiKey.Tests.TemplateWebApiKey.Api.Controllers
+namespace TemplateWeb.Tests.TemplateWeb.Api.Controllers
 {
     public class AuthenticateControllerTest : IDisposable
     {

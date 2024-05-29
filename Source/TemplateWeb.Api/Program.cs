@@ -1,4 +1,5 @@
-using TemplateWebApiKey.Api.Configurations;
+using Serilog;
+using TemplateWeb.Api.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.ConfigureSwagguer(builder.Configuration);
+
+builder.Services.RegisterServices(builder.Configuration);
+
+#region Configuração da Biblioteca Serilog com ElasticSearch
+ElasticSearchConfigurations.ConfigureLogging();
+builder.Host.UseSerilog();
+#endregion
 
 var app = builder.Build();
 

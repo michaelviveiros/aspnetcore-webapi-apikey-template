@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TemplateWebApiKey.Api\TemplateWebApiKey.Api.csproj" />
+    <ProjectReference Include="..\TemplateWeb.Api\TemplateWeb.Api.csproj" />
   </ItemGroup>
 
 </Project>

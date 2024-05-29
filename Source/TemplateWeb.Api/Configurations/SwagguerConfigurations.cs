@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-namespace TemplateWebApiKey.Api.Configurations
+namespace TemplateWeb.Api.Configurations
 {
     /// <summary>
     /// Classe de configuração e inicialização da biblioteca Swagguer.

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TemplateWebApiKey.Api.Attributes;
-using TemplateWebApiKey.Api.Class;
+using TemplateWeb.Api.Attributes;
+using TemplateWeb.Api.Class;
 
-namespace TemplateWebApiKey.Api.Controllers
+namespace TemplateWeb.Api.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
